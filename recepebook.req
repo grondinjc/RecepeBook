@@ -1,0 +1,5 @@
+CherryPy==6.2.0
+Genshi==0.7
+requests==2.10.0
+six==1.10.0
+SQLAlchemy==1.0.14
