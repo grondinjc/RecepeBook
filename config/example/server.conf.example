@@ -1,0 +1,15 @@
+# Gobal server config
+[global]
+server.socket_host='0.0.0.0'
+server.socket_port=8080
+server.thread_pool=20
+tools.sessions.on=True
+tools.sessions.clean_freq=2  # Cleans expired sessions every 2 minutes
+#tools.sessions.lock='explicit'  # We'll see later...
+tools.auth.on=True
+ssl_certificate=None
+ssl_private_key=None
+log.screen=True
+log.access_file='<<PRJ>>/logs/cherrypy_access.log'
+log.error_file='<<PRJ>>/logs/cherrypy_error.log'
+

@@ -1,0 +1,11 @@
+[DEFAULT]
+# project_name = 'some name'
+# base_path = '/path/to/project/root/without/ending/slash'
+
+[APP]
+# server = '/bin/configs/server.conf'
+# aController = '/bin/configs/aController.conf'
+
+[LOGGERS]
+# log_file = '/logs/recepebook.log'
+

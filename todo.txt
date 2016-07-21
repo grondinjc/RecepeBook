@@ -1,0 +1,6 @@
+TODO : 
+
+Move example config to /config folder
+download html libs to serve statically
+add css file
+convert sss/generate script to python for easier integration
