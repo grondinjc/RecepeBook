@@ -13,6 +13,7 @@ PROJECT_DESC = 'Local online customizable recepe book'
 
 VERSION_FILE_NAME = 'VERSION' 
 REQUIREMENTS_FILE_NAME = 'REQUIREMENTS'
+CONF_OUTPUT_DIR = 'prj_config'
 
 META_AUTHOR = "Jean-Christophe Grondin"
 META_AUTHOR_EMAIL = "grondin.jc@hotmail.com"
@@ -66,4 +67,7 @@ setup(
     # add non-python files (must be in MANIFEST)
     package_data = {app_name: ["src/template/*", "src/static/*"]},
     include_package_data = True,
+
+    # export configuration files
+    data_files=[(CONF_OUTPUT_DIR, get_files_in_dir('config', "*.conf"))]
 )
