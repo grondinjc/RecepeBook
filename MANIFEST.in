@@ -1,0 +1,8 @@
+include todo.txt
+include VERSION
+include REQUIREMENTS
+
+recursive-include src/template *
+recursive-include src/static *
+
+recursive-include config *.conf

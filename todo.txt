@@ -1,5 +1,6 @@
 TODO : 
 
+Setup.py to package files
 Move example config to /config folder
 download html libs to serve statically
 add css file
