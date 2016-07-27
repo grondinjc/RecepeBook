@@ -69,5 +69,8 @@ setup(
     include_package_data = True,
 
     # export configuration files
-    data_files=[(CONF_OUTPUT_DIR, get_files_in_dir('config', "*.conf"))]
+    data_files = [(CONF_OUTPUT_DIR, get_files_in_dir('config', "*.conf"))],
+
+    # expose script
+    scripts = ['bin/launch_recepebook'],
 )

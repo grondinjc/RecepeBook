@@ -10,6 +10,6 @@ tools.auth.on=True
 ssl_certificate=None
 ssl_private_key=None
 log.screen=True
-log.access_file='<<PRJ>>/logs/cherrypy_access.log'
-log.error_file='<<PRJ>>/logs/cherrypy_error.log'
+#log.access_file='/logs/cherrypy_access.log'
+#log.error_file='/logs/cherrypy_error.log'
 
