@@ -37,6 +37,8 @@ class HomeController(object):
 
     self._logger.debug("HomeController instance created")
 
+    self._f = open("/home/jc/Desktop/Recepe/RecepeBook/src/web/static/test.mp4")
+
 
   @cherrypy.expose
   def index(self):
@@ -54,3 +56,12 @@ class HomeController(object):
     app_name = self._app.get_app_name()
     stream = tmpl.generate(title=app_name)
     return stream.render('html')
+
+  @cherrypy.expose
+  def video(self, tag):
+    content_type="video/mp4"
+    disposition=None #"inline"
+    name="test.mp4"
+    print tag
+
+    return static.serve_fileobj(self._f, content_type, disposition, name)
