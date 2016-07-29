@@ -2,7 +2,6 @@
   <head>
     <title py:content="title"></title>
 
-    <link rel="icon" href="recepebook.ico" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     
     <!-- RecepeBook CSS -->
@@ -14,6 +13,25 @@
 
   <body>
 
+    <!-- Search bar -->
+    <div id="search" class="searchbox header_item">
+      
+      <form accept-charset="UTF-8" action="/video" class="search" method="get">
+        <div class="search_wrapper">
+          <input autocomplete="off" class="text q" id="q" name="tag" placeholder="What kind of recepe do you want?" type="text" />
+        </div>
+
+        <span class="i i-x search_clear"></span>
+        <span class="i i-search search_icon"></span>
+        <input type="submit" value=" " style="visibility: hidden; position: absolute;" />
+      </form>
+
+      <div class="autocomplete" style="display: none;"></div>
+
+      <a href="/#" id="search_button" class="icon-link"><span class="i i-search"></span></a>
+      <a href="/explore" id="explore_button" class="icon-link"><span class="i-explore-large"></span> <span class="text">Explore</span></a>
+
+    </div>
 
 
     <h1 py:content="title"></h1>

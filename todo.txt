@@ -6,6 +6,9 @@ Add supervisord to monitor process
 Allow to run on port 80 (http)
 fetch video from db
 add 8tracks-like ui
+add db auto-increment on indexes
+detect when db is not present
+investigate error on two curl requests
 
 
 DONE : 

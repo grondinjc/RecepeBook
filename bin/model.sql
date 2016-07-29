@@ -12,7 +12,6 @@ COMMIT;
 BEGIN TRANSACTION;
 
 
-
 CREATE TABLE Recepe (
     id           INTEGER                NOT NULL,
     name         VARCHAR(200)           NOT NULL,
@@ -42,6 +41,21 @@ CREATE TABLE RecepeTagAssoc (
     CONSTRAINT fk_tagid FOREIGN KEY (tag_id) REFERENCES Tag (id)
 );
 
+
+COMMIT;
+
+
+-- ----------------
+-- ----- Data -----
+-- ----------------
+BEGIN TRANSACTION;
+
+INSERT INTO Tag(id, name) VALUES (0, "Agneau");
+INSERT INTO Tag(id, name) VALUES (1, "Boeuf");
+INSERT INTO Tag(id, name) VALUES (2, "Porc");
+INSERT INTO Tag(id, name) VALUES (3, "Poisson");
+INSERT INTO Tag(id, name) VALUES (4, "Fromage");
+INSERT INTO Tag(id, name) VALUES (5, "Tomate");
 
 
 COMMIT;
