@@ -1,6 +1,6 @@
-<html xmlns:py="http://genshi.edgewall.org/">
+<html>
   <head>
-    <title py:content="title"></title>
+    <title>{% trans %}{{ title }}!{% endtrans %}</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     
@@ -34,7 +34,7 @@
     </div>
 
 
-    <h1 py:content="title"></h1>
+    <h1>{% trans %}{{ title }}!{% endtrans %}</h1>
     <video width="320" height="240" controls="">
       <source src="/video?tag=beef2"/>
       Your browser does not support the video tag.

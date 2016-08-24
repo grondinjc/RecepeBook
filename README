@@ -1,0 +1,1 @@
+setup.py init_catalog -l fr -i src/web/template/home.html -o foobar/locales/fr/messages.po

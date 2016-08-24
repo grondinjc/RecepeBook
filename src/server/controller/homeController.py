@@ -1,9 +1,9 @@
 import cherrypy
 from cherrypy import request, HTTPError
 from cherrypy.lib import static
-from genshi.template import TemplateLoader
 from os.path import relpath
 
+import locale
 from pdb import set_trace as dbg
 
 class HomeController(object):
@@ -13,12 +13,12 @@ class HomeController(object):
 
   HTML_TEMPLATE = 'home.html'
 
-  def __init__(self, app, template_path, logger):
+  def __init__(self, app, loader, logger):
     """
     Controller initialiser
 
     @type app: cide.app.python.core.Core
-    @type template_path: str
+    @type loader: jinja2.Environment
     @type logger: logging.Logger
 
     @param app: The core application
@@ -27,9 +27,7 @@ class HomeController(object):
     """
     self._app = app
     self._logger = logger
-
-    self._loader = TemplateLoader(search_path=[template_path],
-                                  auto_reload=True)
+    self._loader = loader
 
     self._logger.debug("HomeController instance created")
 
@@ -45,11 +43,9 @@ class HomeController(object):
     self._logger.info("index requested by ({0}:{1})".format(request.remote.ip,
                                                             request.remote.port))
 
-    tmpl = self._loader.load(self.HTML_TEMPLATE)
-
-    app_name = self._app.get_app_name()
-    stream = tmpl.generate(title=app_name)
-    return stream.render('html')
+    locale.setlocale(locale.LC_ALL, 'en_US')
+    tmpl = self._loader.get_template(self.HTML_TEMPLATE)
+    return tmpl.render(title=self._app.get_app_name())
 
 
   @cherrypy.expose

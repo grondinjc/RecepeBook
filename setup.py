@@ -1,5 +1,8 @@
 from distutils.core import setup
 from setuptools import find_packages
+
+from babel.messages import frontend as babel
+
 from fnmatch import fnmatch
 import os 
 
@@ -48,7 +51,6 @@ def get_files_in_dir(dir_name, pattern):
     return [fmt.format(f) for f in os.listdir(dir_name) if fnmatch(f, pattern)]
 
 
-
 setup(
     name = PROJECT_NAME,
     version = get_version(),
@@ -73,4 +75,11 @@ setup(
 
     # expose script
     scripts = ['bin/launch_recepebook'],
+
+    # expose translation commands to the setup script
+    cmdclass = {'compile_catalog': babel.compile_catalog,
+                'extract_messages': babel.extract_messages,
+                'init_catalog': babel.init_catalog,
+                'update_catalog': babel.update_catalog}
 )
+
