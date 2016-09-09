@@ -3,14 +3,17 @@ from cherrypy import request, HTTPError
 from cherrypy.lib import static
 from os.path import relpath
 
+from recepebook.server.controller.utils.serializer import Serializer
 from pdb import set_trace as dbg
+dumps = Serializer.dumps
 
-class HomeController(object):
+
+class ImportController(object):
   """
-  Controller of the /Home part
+  Controller of the /Import part
   """
 
-  HTML_TEMPLATE = 'home.html'
+  HTML_TEMPLATE = 'import.html'
 
   def __init__(self, app, loader, logger):
     """
@@ -28,7 +31,7 @@ class HomeController(object):
     self._logger = logger
     self._loader = loader
 
-    self._logger.debug("HomeController instance created")
+    self._logger.debug("ImportController instance created")
 
 
   @cherrypy.expose
@@ -45,23 +48,14 @@ class HomeController(object):
     tmpl = self._loader.get_template(self.HTML_TEMPLATE)
     return tmpl.render(title=self._app.get_app_name())
 
-
   @cherrypy.expose
-  def video(self, tag, **params):
+  @cherrypy.tools.allow(methods=['POST'])
+  def detect_bookmark_links(self, bookmark_text, **kwargs):
     """
-    Controller for ajax request
-    (Path : /video)
+    Controller request handler page generator
+    (Path : /bookmark)
 
-    @return: 
+    @return: HTML template to render
     """
-    content_type = "video/mp4"
-    disposition = "inline"
-    name = "test.mp4"
-
-    f = self._app.get_matching_recepes(tag)
-    return static.serve_fileobj(f, content_type, disposition, name)
-
-  @cherrypy.expose
-  def test(self):
-    tags = self._app.get_search_tag("")
-    return ",".join(tags)
+    return dumps(self._app.get_detected_recepes_from_bookmarks(bookmark_text))
+    

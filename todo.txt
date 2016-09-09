@@ -5,6 +5,9 @@ add css file
 Add supervisord to monitor process
 Allow to run on port 80 (http)
 
+do import tool
+save a video to the db
+
 fetch video from db
 add 8tracks-like ui
 add db auto-increment on indexes
@@ -12,6 +15,10 @@ detect when db is not present
 investigate error on two curl requests
 internalization support (i18n)
 Move babel usage in setup script into lower scope to allow regular install
+Use configurable db path
+create template hierarchy to header and footer
+create base controller to download get video
+add unittest
 
 DONE : 
 

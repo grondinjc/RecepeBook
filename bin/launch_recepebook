@@ -11,6 +11,10 @@ from babel.support import Translations
 
 from recepebook.server.app.recepebookApp import RecepeBook
 from recepebook.server.controller.homeController import HomeController
+from recepebook.server.controller.importController import ImportController
+
+
+
 from pdb import set_trace as dbg 
 
 
@@ -53,6 +57,7 @@ app_template_dir = configs['APP']['templates']
 # Controller configurations
 conf_file_server = configs['ENGINE']['server']
 conf_file_controllerHome = configs['ENGINE']['homeController']
+conf_file_controllerImport = configs['ENGINE']['importController']
 
 # Setup Log
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(module)s - %(message)s')
@@ -73,11 +78,17 @@ cherrypy.engine.subscribe('start', app.start)
 cherrypy.engine.subscribe('stop', app.stop)
 
 
+# Create html template loader
 template_loader = build_template_loader(app_template_dir)
 
+# Create web controllers
+home_ctrl = HomeController(app, template_loader, logger)
+import_ctrl = ImportController(app, template_loader, logger)
+
 # Map URI path to controllers
-cherrypy.tree.mount(HomeController(app, template_loader, logger),
-                    "/", conf_file_controllerHome)
+#cherrypy.tree.mount(home_ctrl, "/", conf_file_controllerHome)
+#cherrypy.tree.mount(import_ctrl, "/import", conf_file_controllerImport)
+cherrypy.tree.mount(import_ctrl, "/", conf_file_controllerImport)
 
 # Start server
 cherrypy.engine.start()

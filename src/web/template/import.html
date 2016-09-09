@@ -1,0 +1,84 @@
+<!-- {% trans %}{% endtrans %} -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ title }}!</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <!-- JQuery -->
+        <script src="static/js/jquery-1.12.4.min.js"></script>
+        
+        <!-- Knockout -->
+        <script src="static/js/knockout-3.4.0.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="static/css/bootstrap-3.3.7.min.css" />
+        <script src="static/js/bootstrap-3.3.7.min.js"></script>
+
+        <!-- RecepeBook -->
+        <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+        <script src="static/js/recepebookImport.js"></script>
+
+        <!-- Initializer -->
+        <script>
+            $(document).ready(function(){
+                import_init();
+            });
+        </script>
+
+        <!-- Template for facebook links results -->
+        <script type="text/html" id="fb_links_tmpl">
+            <h3 data-bind="text: source"></h3>
+            <div data-bind="foreach: links">
+                <p data-bind="text: $data"></p>
+            </div>
+        </script>
+
+    </head>
+
+    <body>
+    <div class="container">
+
+
+        <h2>{% trans %}Import a recepe to the book{% endtrans %}</h2>
+        
+        <!-- tab container header -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab_single">Single</a></li>
+            <li><a data-toggle="tab" href="#tab_group">Group</a></li>
+            <li><a data-toggle="tab" href="#tab_fb">Facebook</a></li>
+        </ul>
+
+        <!-- tab container body -->
+        <div class="tab-content">
+
+            <!-- Single tab menu -->
+            <div id="tab_single" class="tab-pane fade in active">
+                <h3>Single import menu</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
+            <!-- Group tab menu -->
+            <div id="tab_group" class="tab-pane fade">
+                <h3>Group import menu</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            
+            <!-- Facebook import tab menu -->
+            <div id="tab_fb" class="tab-pane fade">
+                <h5>Import recepe from Facebook bookmarks</h5>
+                <p>Instructions...</p>
+                
+                <p>Facebook bookmark html code</p>
+                <input type="text" data-bind="value: facebook_data" placeholder="{% trans %}Insert html code here{% endtrans %}">
+                <button data-bind="click: send_bookmark">Detect recepes</button>
+
+                <div data-bind="visible: facebook_data_links().length > 0, template: { name: 'fb_links_tmpl', foreach: facebook_data_links }"></div>
+            </div>
+
+        </div>
+
+    </div>        
+    </body> <!-- div container -->
+</html>
